@@ -43,26 +43,18 @@
     }
 
     a.button {
-      display: flex;
-      align-items: center;
+      display: inline-block;
       text-decoration: none;
       padding: 0.6rem 1rem;
       border-radius: 5px;
       font-weight: bold;
       transition: background 0.3s ease;
       white-space: nowrap;
-    }
-
-    a.button img {
-      height: 1em;
-      width: 1em;
-      margin-right: 0.5em;
-      filter: invert(100%);
+      color: white;
     }
 
     .linkedin {
       background-color: #0077b5;
-      color: white;
     }
 
     .datacamp {
@@ -70,13 +62,8 @@
       color: black;
     }
 
-    .datacamp img {
-      filter: invert(0%);
-    }
-
     .bluesky {
       background-color: #1183fe;
-      color: white;
     }
 
     a.button:hover {
@@ -108,18 +95,9 @@
 
     <h2>Contact</h2>
     <div class="button-group">
-      <a class="button linkedin" href="https://www.linkedin.com/in/yourlinkedin/" target="_blank">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" />
-        LinkedIn
-      </a>
-      <a class="button datacamp" href="https://www.datacamp.com/portfolio/yourprofile" target="_blank">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/datacamp.svg" alt="DataCamp" />
-        DataCamp Portfolio
-      </a>
-<a class="button bluesky" href="https://bsky.app/profile/yourhandle.bsky.social" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Bluesky_Logo.svg/512px-Bluesky_Logo.svg.png" alt="Bluesky" />
-  Bluesky
-</a>
+      <a class="button linkedin" href="https://www.linkedin.com/in/yourlinkedin/" target="_blank">LinkedIn</a>
+      <a class="button datacamp" href="https://www.datacamp.com/portfolio/yourprofile" target="_blank">DataCamp Portfolio</a>
+      <a class="button bluesky" href="https://bsky.app/profile/yourhandle.bsky.social" target="_blank">Bluesky</a>
     </div>
   </main>
 
