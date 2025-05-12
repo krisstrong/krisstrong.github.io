@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kris Strong | Data Analyst</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -15,10 +22,46 @@
     }
 
     header {
-      background: #007acc;
+      background: linear-gradient(135deg, #007acc, #005b99);
       color: white;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
       text-align: center;
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%);
+      animation: rotate 20s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    header h1,
+    header p {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.95;
     }
 
     main {
@@ -27,7 +70,7 @@
       margin: auto;
     }
 
-    h1, h2 {
+    h2 {
       margin-bottom: 0.5rem;
     }
 
@@ -43,31 +86,37 @@
     }
 
     a.button {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       text-decoration: none;
-      padding: 0.6rem 1rem;
-      border-radius: 5px;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
       font-weight: bold;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
       white-space: nowrap;
       color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transform: translateY(0);
+    }
+
+    a.button:hover {
+      opacity: 0.95;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
 
     .linkedin {
-      background-color: #0077b5;
+      background: linear-gradient(135deg, #0077b5, #005582);
     }
 
     .datacamp {
-      background-color: #03ef62;
+      background: linear-gradient(135deg, #03ef62, #00c750);
       color: black;
     }
 
     .bluesky {
-      background-color: #1183fe;
-    }
-
-    a.button:hover {
-      opacity: 0.9;
+      background: linear-gradient(135deg, #1183fe, #005ecb);
     }
 
     footer {
@@ -95,9 +144,15 @@
 
     <h2>Contact</h2>
     <div class="button-group">
-      <a class="button linkedin" href="https://www.linkedin.com/in/krisstrong//" target="_blank">LinkedIn</a>
-      <a class="button datacamp" href="https://www.datacamp.com/portfolio/strongkris" target="_blank">DataCamp Portfolio</a>
-      <a class="button bluesky" href="https://bsky.app/profile/kris-strong.bsky.social" target="_blank">Bluesky</a>
+      <a class="button linkedin" href="https://www.linkedin.com/in/krisstrong/" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a class="button datacamp" href="https://www.datacamp.com/portfolio/strongkris" target="_blank">
+        <i class="fas fa-chart-line"></i> DataCamp Portfolio
+      </a>
+      <a class="button bluesky" href="https://bsky.app/profile/kris-strong.bsky.social" target="_blank">
+        <i class="fas fa-cloud"></i> Bluesky
+      </a>
     </div>
   </main>
 
