@@ -119,6 +119,42 @@
       background: linear-gradient(135deg, #1183fe, #005ecb);
     }
 
+    .skills-section {
+      margin-top: 2rem;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+.skill-badge {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.9rem; /* ADDED */
+  padding: 0.4rem 0.8rem; /* REDUCED */
+}
+
+    .skill-badge:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .skill-badge i {
+      color: #007acc;
+      min-width: 20px;
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
@@ -135,12 +171,31 @@
   </header>
 
   <main>
+  
+      <h2>About Me</h2>
+    <p>I'm currently working as an HRIS Analyst at a Canadian university. I'm interested in transitioning into a full-time data-focused role and enjoy building projects that show the real-world value of data.</p>
+
+
+    <div class="skills-section">
+<h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-badge"><i class="fas fa-code"></i> Python</div>
+        <div class="skill-badge"><i class="fas fa-database"></i> SQL</div>
+        <div class="skill-badge"><i class="fas fa-chart-bar"></i> Power BI</div>
+        <div class="skill-badge"><i class="fas fa-table"></i> Excel</div>
+        <div class="skill-badge"><i class="fab fa-microsoft"></i> Azure</div>
+        <div class="skill-badge"><i class="fas fa-cogs"></i> ETL Processes</div>
+        <div class="skill-badge"><i class="fas fa-eye"></i> Data Visualization</div>
+        <div class="skill-badge"><i class="fas fa-broom"></i> Data Cleaning</div>
+        <div class="skill-badge"><i class="fas fa-users"></i> HR Analytics</div>
+        <div class="skill-badge"><i class="fas fa-code"></i> R</div>
+      </div>
+    </div>
+
     <h2>Data Projects</h2>
     <p><strong>Personal Fitness Tracker</strong><br>
     ETL and analysis of fitness data using Azure and Python</p>
 
-    <h2>About Me</h2>
-    <p>I'm currently working as an HRIS Analyst at a Canadian university. I'm interested in transitioning into a full-time data-focused role and enjoy building projects that show the real-world value of data.</p>
 
     <h2>Contact</h2>
     <div class="button-group">
