@@ -2,265 +2,204 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kris Strong | Data Analyst</title>
 
-  <!-- Font Awesome for icons -->
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
-
   <style>
+    :root {
+      --bg-color: #1e1e1e;
+      --text-color: #e0e0e0;
+      --accent-color: #00bcd4;
+      --card-bg: #2a2a2a;
+      --tag-bg: #333;
+      --tag-color: #ccc;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
       margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #333;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 2rem;
     }
 
-    header {
-      background: linear-gradient(135deg, #007acc, #005b99);
-      color: white;
-      padding: 3rem 1rem;
-      text-align: center;
-      font-family: 'Poppins', sans-serif;
-      position: relative;
-      overflow: hidden;
-    }
-
-    header::before {
-      content: "";
-      position: absolute;
-      top: -50px;
-      left: -50px;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%);
-    /*  animation: rotate 20s linear infinite; */
-      z-index: 0;
-    }
-
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    header h1,
-    header p {
-      position: relative;
-      z-index: 1;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.95;
-    }
-
-    main {
-      padding: 2rem 1rem;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    h2 {
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      margin-bottom: 1rem;
-    }
-
-    .button-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    a.button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 10px;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-      color: white;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transform: translateY(0);
-    }
-
-    a.button:hover {
-      opacity: 0.95;
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .linkedin {
-      background: linear-gradient(135deg, #0077b5, #005582);
-    }
-
-    .datacamp {
-      background: linear-gradient(135deg, #03ef62, #00c750);
-      color: black;
-    }
-
-    .bluesky {
-      background: linear-gradient(135deg, #1183fe, #005ecb);
-    }
-
-    .skills-section {
+    h1, h2 {
+      color: var(--accent-color);
       margin-top: 2rem;
     }
 
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1rem;
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-/* added 2025-05-20 */
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: 0.5rem;
-}
-
-.tag-badge {
-  background: #fff4e5;
-  color: #cc6600;
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-
-.skill-badge {
-  background: #e0f0ff;
-  color: #005b99;
-  border-radius: 6px;
-  padding: 0.3rem 0.6rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  box-shadow: none;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-/*
-    .skill-badge:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
     }
-*/
-    .skill-badge i {
-      color: #007acc;
-      min-width: 20px;
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: var(--tag-bg);
+      color: var(--tag-color);
+      border-radius: 4px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.85rem;
+      margin: 0.2rem;
+    }
+
+    .section {
+      margin-top: 3rem;
+    }
+
+    .project {
+      background-color: var(--card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    }
+
+    .project h3 {
+      margin-bottom: 0.3rem;
+    }
+
+    .project a.project-link {
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+
+    .links a, .interesting-links a, .how-to a {
+      display: inline;
+      margin-right: 1rem;
+      color: var(--accent-color);
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-bottom 0.2s;
+    }
+
+    .links a:hover, .interesting-links a:hover, .how-to a:hover {
+      border-bottom: 1px solid var(--accent-color);
     }
 
     footer {
       text-align: center;
-      padding: 1rem;
-      background: #eaeaea;
-      margin-top: 2rem;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>Kris Strong</h1>
-    <p>Data Analyst | Visual Storyteller | Power BI Enthusiast</p>
-  </header>
-
-  <main>
-  
-      <h2>About Me</h2>
-    <p>I'm currently working as an HRIS Analyst at a Canadian university. I'm interested in transitioning into a full-time data-focused role and enjoy building projects that show the real-world value of data.</p>
-
-
-    <div class="skills-section">
-<h2>Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-badge"><i class="fas fa-code"></i> Python</div>
-        <div class="skill-badge"><i class="fas fa-database"></i> SQL</div>
-        <div class="skill-badge"><i class="fas fa-chart-bar"></i> Power BI</div>
-        <div class="skill-badge"><i class="fas fa-table"></i> Excel</div>
-        <div class="skill-badge"><i class="fab fa-microsoft"></i> Azure</div>
-        <div class="skill-badge"><i class="fas fa-cogs"></i> ETL Processes</div>
-        <div class="skill-badge"><i class="fas fa-eye"></i> Data Visualization</div>
-        <div class="skill-badge"><i class="fas fa-broom"></i> Data Cleaning</div>
-        <div class="skill-badge"><i class="fas fa-users"></i> HR Analytics</div>
-        <div class="skill-badge"><i class="fas fa-code"></i> R</div>
-        <div class="skill-badge"><i class="fas fa-chart-bar"></i> Informer</div>
+  <div class="container">
+    <header>
+      <h1>Kris Strong</h1>
+      <p>Data Analyst | Visual Storyteller | Power BI Enthusiast</p>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/krisstrong/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://www.datacamp.com/portfolio/strongkris" target="_blank"><i class="fas fa-chart-line"></i> DataCamp</a>
+        <a href="https://bsky.app/profile/kris-strong.bsky.social" target="_blank"><i class="fas fa-cloud"></i> Bluesky</a>
       </div>
-    </div>
+    </header>
 
- <h2>Personal Data Projects</h2>
+    <section class="section">
+      <h2>About Me</h2>
+      <p>I'm currently working as an HRIS Analyst at a Canadian university. I’m exploring opportunities to work more directly with data — collecting it, cleaning it, visualizing it, and drawing real-world insights from it.</p>
+    </section>
 
-<p><strong>Personal Fitness Tracker</strong><br>
-ETL and analysis of fitness data using Azure, SQL, and Python.
-<div class="project-tags">
-  <span class="tag-badge">Azure</span>
-  <span class="tag-badge">SQL</span>
-  <span class="tag-badge">Python</span>
-  <span class="tag-badge">ETL</span>
-  <span class="tag-badge">Fitness</span>
-</div>
-</p>
+    <section class="section">
+      <h2>Skills</h2>
+      <div>
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Excel</span>
+        <span class="tag">Azure</span>
+        <span class="tag">ETL</span>
+        <span class="tag">Data Viz</span>
+        <span class="tag">Data Cleaning</span>
+        <span class="tag">HR Analytics</span>
+        <span class="tag">R</span>
+        <span class="tag">Informer</span>
+        <span class="tag">Colleague</span>
+        <span class="tag">Dayforce</span>
+      </div>
+    </section>
 
-<p><strong>US Tariff Policy and Impact on Stock Market</strong><br>
-A personal investment tool for evaluating potential stock purchases using Python. Specifically, it aims to track the performance of investments following President Trump's tariff announcements.
-<div class="project-tags">
-  <span class="tag-badge">Python</span>
-  <span class="tag-badge">Finance</span>
-  <span class="tag-badge">Time Series</span>
-  <span class="tag-badge">Data Visualization</span>
-</div>
-</p>
+    <section class="section">
+      <h2>Projects</h2>
 
-<p><strong>A Better CALC</strong><br>
-Using R to clean and transform a Colleague CALC file into a usable tool to audit a payroll.
-<div class="project-tags">
-  <span class="tag-badge">R</span>
-  <span class="tag-badge">Payroll</span>
-  <span class="tag-badge">Data Cleaning</span>
-  <span class="tag-badge">Audit</span>
-</div>
-</p>
+      <div class="project">
+        <h3><a href="https://www.datacamp.com/datalab/w/a2f2230b-cd9a-4cc2-912f-33eaae6d1c60/edit" class="project-link" target="_blank">Personal Fitness Tracker</a></h3>
+        <p>ETL and analysis of fitness data using Azure, SQL, and Python.</p>
+        <div>
+          <span class="tag">Azure</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Python</span>
+          <span class="tag">ETL</span>
+          <span class="tag">Fitness</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <h3><a href="https://www.datacamp.com/datalab/w/83a0363c-d059-48b6-96c6-762afa57a6e3/edit#06ac8087-dd26-4ada-a6f1-d30239a6069d" class="project-link" target="_blank">US Tariff Impact on Stocks</a></h3>
+        <p>Tracks the performance of investments after tariff announcements using Python and time series analysis.</p>
+        <div>
+          <span class="tag">Python</span>
+          <span class="tag">Finance</span>
+          <span class="tag">Time Series</span>
+          <span class="tag">Data Viz</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <h3><a href="#" class="project-link" target="_blank">A Better CALC</a></h3>
+        <p>Used R to clean and transform a Colleague CALC file into a tool for auditing payroll.</p>
+        <div>
+          <span class="tag">R</span>
+          <span class="tag">Payroll</span>
+          <span class="tag">Data Cleaning</span>
+          <span class="tag">Audit</span>
+        </div>
+      </div>
+    </section>
+
+<section class="section interesting-links">
+  <h2>Interesting Links</h2>
+  <p>
+    <a href="https://rweekly.org" target="_blank">R Weekly</a> — Weekly collection of R-related news and resources.<br>
+    <a href="https://flowingdata.com" target="_blank">FlowingData</a> — Data visualizations that tell compelling stories.<br>
+    <a href="https://datasciencecentral.com" target="_blank">Data Science Central</a> — Community and resources for data science professionals.<br>
+    <a href="https://www.datacamp.com/" target="_blank">DataCamp</a> — Online learning platform for data science and analytics.<br>
+    <a href="https://towardsdatascience.com/from-default-python-line-chart-to-journal-quality-infographics-80e3949eacc3/" target="_blank">Better Line Charts in Python</a> — Guide to upgrading basic plots into publication-quality visualizations.<br>
+    <a href="https://datamgmtinedresearch.com/" target="_blank">Data Management in Ed Research</a> — Practical tools and practices for education research data management.<br>
+    <a href="https://themegenerator.point-gmbh.com/en/Home" target="_blank">Theme Generator</a> — Quickly generate accessible and customizable color themes.<br>
+    <a href="https://www.sqlstyle.guide/" target="_blank">SQL Style Guide</a> — Best practices for writing clean, readable SQL.<br>
+    <a href="https://open.canada.ca/en/using-open-data" target="_blank">Open Canada Data</a> — Guidelines and resources for working with Canadian open government data.<br>
+    <a href="https://exceljet.net/formulas" target="_blank">ExcelJet Formulas</a> — Quick reference for hundreds of Excel formulas with examples.<br>
+    <a href="http://web-accessibility.carnegiemuseums.org/design/color/" target="_blank">Accessible Color Design</a> — Designing with color for better web accessibility.<br>
+    <a href="https://datavizcatalogue.com/index.html" target="_blank">Data Viz Catalogue</a> — Visual index of different types of data visualizations and when to use them.<br>
+    <a href="https://www.tomforth.co.uk/circlepopulations/?utm_campaign=Data_Elixir&utm_source=Data_Elixir_424" target="_blank">Circle Populations</a> — Creative visual representation of city populations using proportional circles.<br>
+  </p>
+</section>
 
 
-    <h2>Contact</h2>
-    <div class="button-group">
-      <a class="button linkedin" href="https://www.linkedin.com/in/krisstrong/" target="_blank">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-      <a class="button datacamp" href="https://www.datacamp.com/portfolio/strongkris" target="_blank">
-        <i class="fas fa-chart-line"></i> DataCamp Portfolio
-      </a>
-      <a class="button bluesky" href="https://bsky.app/profile/kris-strong.bsky.social" target="_blank">
-        <i class="fas fa-cloud"></i> Bluesky
-      </a>
-    </div>
-  </main>
 
-  <footer>
-    <p>&copy; 2025 Kris Strong</p>
-  </footer>
-
+    <footer>
+      <p>&copy; 2025 Kris Strong</p>
+    </footer>
+  </div>
 </body>
 </html>
