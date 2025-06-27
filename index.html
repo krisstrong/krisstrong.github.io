@@ -6,30 +6,49 @@
   <title>Kris Strong | Data Analyst</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 
   <style>
     :root {
-      --bg-color: #1e1e1e;
+      --bg-color: #0e1117;
       --text-color: #e0e0e0;
-      --accent-color: #00bcd4;
-      --card-bg: #2a2a2a;
-      --tag-bg: #333;
-      --tag-color: #ccc;
+      --accent-color: #ff7f0e;
+      --card-bg: #161b22;
+      --tag-color: #ffffff;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 10% 20%, rgba(31,119,180,0.08) 0%, transparent 60%),
+        radial-gradient(circle at 80% 30%, rgba(255,127,14,0.08) 0%, transparent 60%),
+        radial-gradient(circle at 50% 80%, rgba(44,160,44,0.08) 0%, transparent 60%),
+        radial-gradient(circle at 20% 75%, rgba(214,39,40,0.08) 0%, transparent 60%),
+        radial-gradient(circle at 70% 90%, rgba(148,103,189,0.08) 0%, transparent 60%);
+      z-index: -1;
+      pointer-events: none;
     }
 
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
+      font-family: "Inter", sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
       line-height: 1.6;
       padding: 2rem;
     }
 
-    h1, h2 {
+    h1,
+    h2 {
       color: var(--accent-color);
       margin-top: 2rem;
     }
@@ -48,15 +67,22 @@
       text-decoration: underline;
     }
 
-    .tag {
-      display: inline-block;
-      background-color: var(--tag-bg);
-      color: var(--tag-color);
-      border-radius: 4px;
-      padding: 0.25rem 0.6rem;
-      font-size: 0.85rem;
-      margin: 0.2rem;
-    }
+.tag {
+  background-color: #ff7f0e !important;
+  color: #161b22 !important;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.85rem;
+  margin: 0.2rem;
+  user-select: none;
+  position: relative;
+  -webkit-text-stroke: 0;
+}
+
+.tag[data-skill] {
+  background-color: #ff7f0e !important;
+}
 
     .section {
       margin-top: 3rem;
@@ -67,7 +93,7 @@
       padding: 1rem;
       border-radius: 8px;
       margin-bottom: 1.5rem;
-      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
     }
 
     .project h3 {
@@ -80,18 +106,25 @@
       margin-top: 0.5rem;
     }
 
-    .links a, .interesting-links a, .how-to a {
-      display: inline;
+    .links a,
+    .interesting-links a,
+    .how-to a {
+      display: inline-block;
       margin-right: 1rem;
       color: var(--accent-color);
       font-weight: 500;
       text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-bottom 0.2s;
+      border: 0px solid var(--accent-color);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: background-color 0.2s;
     }
 
-    .links a:hover, .interesting-links a:hover, .how-to a:hover {
-      border-bottom: 1px solid var(--accent-color);
+    .links a:hover,
+    .interesting-links a:hover,
+    .how-to a:hover {
+      background-color: var(--accent-color);
+      color: #fff;
     }
 
     footer {
@@ -109,7 +142,7 @@
       <p>Data Analyst | Visual Storyteller | Power BI Enthusiast</p>
       <div class="links">
         <a href="https://www.linkedin.com/in/krisstrong/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-		<a href="https://github.com/krisstrong" target="_blank"><i class="fab fa-github"></i> Github</a>
+        <a href="https://github.com/krisstrong" target="_blank"><i class="fab fa-github"></i> Github</a>
         <a href="https://www.datacamp.com/portfolio/strongkris" target="_blank"><i class="fas fa-chart-line"></i> DataCamp Portfolio</a>
         <a href="https://bsky.app/profile/kris-strong.bsky.social" target="_blank"><i class="fas fa-cloud"></i> Bluesky</a>
       </div>
@@ -117,39 +150,41 @@
 
     <section class="section">
       <h2>About Me</h2>
-      <p>I'm currently working as an HRIS Analyst at a Canadian university. I’m exploring opportunities to work more directly with data — collecting it, cleaning it, visualizing it, and drawing real-world insights from it.</p>
+      <p>
+        I'm currently working as an HRIS Analyst at a Canadian university. I’m exploring opportunities to work more directly with data — collecting it, cleaning it,
+        visualizing it, and drawing real-world insights from it.
+      </p>
     </section>
 
     <section class="section">
       <h2>Skills</h2>
       <div>
-        <span class="tag">Python</span>
-        <span class="tag">SQL</span>
-        <span class="tag">Power BI</span>
-        <span class="tag">Excel</span>
-        <span class="tag">Azure</span>
-        <span class="tag">ETL</span>
-        <span class="tag">Data Viz</span>
-        <span class="tag">Data Cleaning</span>
-        <span class="tag">HR Analytics</span>
-        <span class="tag">R</span>
-        <span class="tag">Informer</span>
-        <span class="tag">Colleague</span>
-        <span class="tag">Dayforce</span>
+        <span class="tag" data-skill="Python">Python</span>
+        <span class="tag" data-skill="SQL">SQL</span>
+        <span class="tag" data-skill="Power BI">Power BI</span>
+        <span class="tag" data-skill="Excel">Excel</span>
+        <span class="tag" data-skill="Azure">Azure</span>
+        <span class="tag" data-skill="ETL">ETL</span>
+        <span class="tag" data-skill="Data Viz">Data Viz</span>
+        <span class="tag" data-skill="Data Cleaning">Data Cleaning</span>
+        <span class="tag" data-skill="HR Analytics">HR Analytics</span>
+        <span class="tag" data-skill="R">R</span>
+        <span class="tag" data-skill="Informer">Informer</span>
+        <span class="tag" data-skill="Colleague">Colleague</span>
+        <span class="tag" data-skill="Dayforce">Dayforce</span>
       </div>
     </section>
 
     <section class="section">
       <h2>Projects</h2>
-	  
-	  
-	    <div class="project">
+
+      <div class="project">
         <h3><a href="https://github.com/krisstrong/howto_line_plot" class="project-link" target="_blank">A Better Line Plot</a></h3>
         <p>A quick guide on how to build a simple line plot.</p>
         <div>
-          <span class="tag">Python</span>
-		<span class="tag">How To</span>
-          <span class="tag">Data Viz</span>		
+          <span class="tag" data-skill="Python">Python</span>
+          <span class="tag" data-skill="How To">How To</span>
+          <span class="tag" data-skill="Data Viz">Data Viz</span>
         </div>
       </div>
 
@@ -157,11 +192,11 @@
         <h3><a href="https://www.datacamp.com/datalab/w/a2f2230b-cd9a-4cc2-912f-33eaae6d1c60/edit" class="project-link" target="_blank">Personal Fitness Tracker</a></h3>
         <p>ETL and analysis of fitness data using Azure, SQL, and Python.</p>
         <div>
-          <span class="tag">Azure</span>
-          <span class="tag">SQL</span>
-          <span class="tag">Python</span>
-          <span class="tag">ETL</span>
-          <span class="tag">Fitness</span>
+          <span class="tag" data-skill="Azure">Azure</span>
+          <span class="tag" data-skill="SQL">SQL</span>
+          <span class="tag" data-skill="Python">Python</span>
+          <span class="tag" data-skill="ETL">ETL</span>
+          <span class="tag" data-skill="Fitness">Fitness</span>
         </div>
       </div>
 
@@ -169,10 +204,10 @@
         <h3><a href="https://www.datacamp.com/datalab/w/83a0363c-d059-48b6-96c6-762afa57a6e3/edit#06ac8087-dd26-4ada-a6f1-d30239a6069d" class="project-link" target="_blank">US Tariff Impact on Stocks</a></h3>
         <p>Tracks the performance of investments after tariff announcements using Python and time series analysis.</p>
         <div>
-          <span class="tag">Python</span>
-          <span class="tag">Finance</span>
-          <span class="tag">Time Series</span>
-          <span class="tag">Data Viz</span>
+          <span class="tag" data-skill="Python">Python</span>
+          <span class="tag" data-skill="Finance">Finance</span>
+          <span class="tag" data-skill="Time Series">Time Series</span>
+          <span class="tag" data-skill="Data Viz">Data Viz</span>
         </div>
       </div>
 
@@ -180,34 +215,40 @@
         <h3><a href="#" class="project-link" target="_blank">A Better CALC</a></h3>
         <p>Used R to clean and transform a Colleague CALC file into a tool for auditing payroll.</p>
         <div>
-          <span class="tag">R</span>
-          <span class="tag">Payroll</span>
-          <span class="tag">Data Cleaning</span>
-          <span class="tag">Audit</span>
+          <span class="tag" data-skill="R">R</span>
+          <span class="tag" data-skill="Payroll">Payroll</span>
+          <span class="tag" data-skill="Data Cleaning">Data Cleaning</span>
+          <span class="tag" data-skill="Audit">Audit</span>
         </div>
       </div>
     </section>
 
-<section class="section interesting-links">
-  <h2>Interesting Links</h2>
-  <p>
-    <a href="https://rweekly.org" target="_blank">R Weekly</a> — Weekly collection of R-related news and resources.<br>
-    <a href="https://flowingdata.com" target="_blank">FlowingData</a> — Data visualizations that tell compelling stories.<br>
-    <a href="https://datasciencecentral.com" target="_blank">Data Science Central</a> — Community and resources for data science professionals.<br>
-    <a href="https://www.datacamp.com/" target="_blank">DataCamp</a> — Online learning platform for data science and analytics.<br>
-    <a href="https://towardsdatascience.com/from-default-python-line-chart-to-journal-quality-infographics-80e3949eacc3/" target="_blank">Better Line Charts in Python</a> — Guide to upgrading basic plots into publication-quality visualizations.<br>
-    <a href="https://datamgmtinedresearch.com/" target="_blank">Data Management in Ed Research</a> — Practical tools and practices for education research data management.<br>
-    <a href="https://themegenerator.point-gmbh.com/en/Home" target="_blank">Theme Generator</a> — Quickly generate accessible and customizable color themes.<br>
-    <a href="https://www.sqlstyle.guide/" target="_blank">SQL Style Guide</a> — Best practices for writing clean, readable SQL.<br>
-    <a href="https://open.canada.ca/en/using-open-data" target="_blank">Open Canada Data</a> — Guidelines and resources for working with Canadian open government data.<br>
-    <a href="https://exceljet.net/formulas" target="_blank">ExcelJet Formulas</a> — Quick reference for hundreds of Excel formulas with examples.<br>
-    <a href="http://web-accessibility.carnegiemuseums.org/design/color/" target="_blank">Accessible Color Design</a> — Designing with color for better web accessibility.<br>
-    <a href="https://datavizcatalogue.com/index.html" target="_blank">Data Viz Catalogue</a> — Visual index of different types of data visualizations and when to use them.<br>
-    <a href="https://www.tomforth.co.uk/circlepopulations/?utm_campaign=Data_Elixir&utm_source=Data_Elixir_424" target="_blank">Circle Populations</a> — Creative visual representation of city populations using proportional circles.<br>
-  </p>
-</section>
-
-
+    <section class="section interesting-links">
+      <h2>Interesting Links</h2>
+      <p>
+        <a href="https://rweekly.org" target="_blank">R Weekly</a>
+        <a href="https://flowingdata.com" target="_blank">FlowingData</a>
+        <a href="https://datasciencecentral.com" target="_blank">Data Science Central</a>
+        <a href="https://www.datacamp.com/" target="_blank">DataCamp</a>
+        <a
+          href="https://towardsdatascience.com/from-default-python-line-chart-to-journal-quality-infographics-80e3949eacc3/"
+          target="_blank"
+          >Better Line Charts in Python</a
+        >
+        <a href="https://datamgmtinedresearch.com/" target="_blank">Data Management in Ed Research</a>
+        <a href="https://themegenerator.point-gmbh.com/en/Home" target="_blank">Theme Generator</a>
+        <a href="https://www.sqlstyle.guide/" target="_blank">SQL Style Guide</a>
+        <a href="https://open.canada.ca/en/using-open-data" target="_blank">Open Canada Data</a>
+        <a href="https://exceljet.net/formulas" target="_blank">ExcelJet Formulas</a>
+        <a href="http://web-accessibility.carnegiemuseums.org/design/color/" target="_blank">Accessible Color Design</a>
+        <a href="https://datavizcatalogue.com/index.html" target="_blank">Data Viz Catalogue</a>
+        <a
+          href="https://www.tomforth.co.uk/circlepopulations/?utm_campaign=Data_Elixir&utm_source=Data_Elixir_424"
+          target="_blank"
+          >Circle Populations</a
+        >
+      </p>
+    </section>
 
     <footer>
       <p>&copy; 2025 Kris Strong</p>
