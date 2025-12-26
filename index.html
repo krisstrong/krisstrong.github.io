@@ -6,7 +6,8 @@
   <title>Kris Strong | Data Analyst</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+
   <!-- Font Awesome -->
   <link
     rel="stylesheet"
@@ -15,162 +16,211 @@
 
   <style>
     :root {
-      --bg-color: #0e1117;
-      --text-color: #e0e0e0;
-      --accent-color: #ff7f0e;
-      --card-bg: #161b22;
-      --tag-color: #ffffff;
+      --bg: #0b0f14;
+      --surface: #121826;
+      --surface-soft: #161d2e;
+      --border: rgba(255,255,255,0.08);
+
+      --text-main: #e6eaf2;
+      --text-muted: #9aa4b2;
+
+      --accent-primary: #4ea1ff;
+      --accent-secondary: #ff9f43;
+      --accent-purple: #9b7bff;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 10% 20%, rgba(31,119,180,0.08) 0%, transparent 60%),
-        radial-gradient(circle at 80% 30%, rgba(255,127,14,0.08) 0%, transparent 60%),
-        radial-gradient(circle at 50% 80%, rgba(44,160,44,0.08) 0%, transparent 60%),
-        radial-gradient(circle at 20% 75%, rgba(214,39,40,0.08) 0%, transparent 60%),
-        radial-gradient(circle at 70% 90%, rgba(148,103,189,0.08) 0%, transparent 60%);
-      z-index: -1;
-      pointer-events: none;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: "Inter", sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(78,161,255,0.08), transparent 50%),
+        radial-gradient(circle at 80% 30%, rgba(255,159,67,0.08), transparent 55%),
+        var(--bg);
+      color: var(--text-main);
       line-height: 1.6;
-      padding: 2rem;
-    }
-
-    h1,
-    h2 {
-      color: var(--accent-color);
-      margin-top: 2rem;
+      padding: 2.5rem 1.5rem;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
     }
 
-    a {
-      color: var(--accent-color);
+    /* ===== HEADER ===== */
+
+    header {
+      padding: 2.5rem;
+      border-radius: 16px;
+      background: linear-gradient(
+        135deg,
+        rgba(78,161,255,0.15),
+        rgba(155,123,255,0.10)
+      );
+      border: 1px solid var(--border);
+      margin-bottom: 3.5rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.6rem;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      margin: 0.6rem 0 1.6rem;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-right: 0.8rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      color: var(--text-main);
       text-decoration: none;
+      font-weight: 500;
+      background: rgba(255,255,255,0.03);
+      transition: all 0.2s ease;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .links a:hover {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
     }
 
-.tag {
-  background-color: #ff7f0e !important;
-  color: #161b22 !important;
-  font-weight: 500;
-  border-radius: 4px;
-  padding: 0.25rem 0.6rem;
-  font-size: 0.85rem;
-  margin: 0.2rem;
-  user-select: none;
-  position: relative;
-  -webkit-text-stroke: 0;
-}
-
-.tag[data-skill] {
-  background-color: #ff7f0e !important;
-}
+    /* ===== SECTIONS ===== */
 
     .section {
-      margin-top: 3rem;
+      margin-top: 3.5rem;
     }
 
+    h2 {
+      font-size: 1.7rem;
+      margin-bottom: 1.2rem;
+      color: var(--accent-primary);
+    }
+
+    p {
+      color: var(--text-muted);
+      max-width: 780px;
+    }
+
+    /* ===== TAGS ===== */
+
+    .tag {
+      display: inline-block;
+      padding: 0.3rem 0.7rem;
+      margin: 0.25rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+    }
+
+    /* ===== PROJECTS ===== */
+
     .project {
-      background-color: var(--card-bg);
-      padding: 1rem;
-      border-radius: 8px;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(180deg, var(--surface), var(--surface-soft));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1.8rem;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-2px);
+      border-color: rgba(78,161,255,0.4);
     }
 
     .project h3 {
-      margin-bottom: 0.3rem;
+      margin: 0 0 0.3rem;
+      font-size: 1.25rem;
     }
 
-    .project a.project-link {
-      font-weight: 600;
-      display: inline-block;
-      margin-top: 0.5rem;
-    }
-
-    .links a,
-    .interesting-links a,
-    .how-to a {
-      display: inline-block;
-      margin-right: 1rem;
-      color: var(--accent-color);
-      font-weight: 500;
+    .project a {
+      color: var(--text-main);
       text-decoration: none;
-      border: 0px solid var(--accent-color);
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      transition: background-color 0.2s;
     }
 
-    .links a:hover,
-    .interesting-links a:hover,
-    .how-to a:hover {
-      background-color: var(--accent-color);
-      color: #fff;
+    .project a:hover {
+      color: var(--accent-primary);
+    }
+
+    /* ===== INTERESTING LINKS ===== */
+
+    .interesting-links a {
+      display: inline-block;
+      margin: 0.35rem 0.6rem 0.35rem 0;
+      padding: 0.45rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+
+    .interesting-links a:hover {
+      color: var(--accent-secondary);
+      border-color: rgba(255,159,67,0.6);
     }
 
     footer {
+      margin-top: 5rem;
       text-align: center;
-      margin-top: 4rem;
-      font-size: 0.9rem;
-      color: #888;
+      font-size: 0.85rem;
+      color: var(--text-muted);
     }
   </style>
 </head>
+
 <body>
   <div class="container">
+
     <header>
       <h1>Kris Strong</h1>
-      <p>Data Analyst | Visual Storyteller | Power BI Enthusiast</p>
+      <p>Data Analyst · Visual Storyteller · Power BI Enthusiast</p>
       <div class="links">
         <a href="https://www.linkedin.com/in/krisstrong/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/krisstrong" target="_blank"><i class="fab fa-github"></i> Github</a>
-        <a href="https://www.datacamp.com/portfolio/strongkris" target="_blank"><i class="fas fa-chart-line"></i> DataCamp Portfolio</a>
+        <a href="https://github.com/krisstrong" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.datacamp.com/portfolio/strongkris" target="_blank"><i class="fas fa-chart-line"></i> DataCamp</a>
       </div>
     </header>
 
     <section class="section">
       <h2>About Me</h2>
       <p>
-        I'm currently working as an HRIS Analyst at a Canadian university. I’m exploring opportunities to work more directly with data — collecting it, cleaning it,
-        visualizing it, and drawing real-world insights from it.
+        I'm currently working as an HRIS Analyst at a Canadian university. I’m exploring opportunities
+        to work more directly with data — collecting it, cleaning it, visualizing it,
+        and drawing real-world insights from it.
       </p>
     </section>
 
     <section class="section">
       <h2>Skills</h2>
       <div>
-        <span class="tag" data-skill="Python">Python</span>
-        <span class="tag" data-skill="SQL">SQL</span>
-        <span class="tag" data-skill="Power BI">Power BI</span>
-        <span class="tag" data-skill="Excel">Excel</span>
-        <span class="tag" data-skill="Azure">Azure</span>
-        <span class="tag" data-skill="ETL">ETL</span>
-        <span class="tag" data-skill="Data Viz">Data Viz</span>
-        <span class="tag" data-skill="Data Cleaning">Data Cleaning</span>
-        <span class="tag" data-skill="HR Analytics">HR Analytics</span>
-        <span class="tag" data-skill="R">R</span>
-        <span class="tag" data-skill="Informer">Informer</span>
-        <span class="tag" data-skill="Colleague">Colleague</span>
-        <span class="tag" data-skill="Dayforce">Dayforce</span>
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Excel</span>
+        <span class="tag">Azure</span>
+        <span class="tag">ETL</span>
+        <span class="tag">Data Viz</span>
+        <span class="tag">Data Cleaning</span>
+        <span class="tag">HR Analytics</span>
+        <span class="tag">R</span>
+        <span class="tag">Informer</span>
+        <span class="tag">Colleague</span>
+        <span class="tag">Dayforce</span>
       </div>
     </section>
 
@@ -178,37 +228,28 @@
       <h2>Projects</h2>
 
       <div class="project">
-        <h3><a href="https://github.com/krisstrong/howto_line_plot" class="project-link" target="_blank">A Better Line Plot</a></h3>
-        <p>A quick guide on how to build a simple line plot.</p>
-        <div>
-          <span class="tag" data-skill="Python">Python</span>
-          <span class="tag" data-skill="How To">How To</span>
-          <span class="tag" data-skill="Data Viz">Data Viz</span>
-        </div>
+        <h3><a href="https://github.com/krisstrong/howto_line_plot" target="_blank">A Better Line Plot</a></h3>
+        <p>A quick guide on how to build a clean, effective line plot.</p>
       </div>
-	  
-	  
-	        <div class="project">
-        <h3><a href="https://github.com/krisstrong/howto_bar_plot" class="project-link" target="_blank">A Better Bar Plot</a></h3>
-        <p>A quick guide on how to build a simple Bar plot.</p>
-        <div>
-          <span class="tag" data-skill="Python">Python</span>
-          <span class="tag" data-skill="How To">How To</span>
-          <span class="tag" data-skill="Data Viz">Data Viz</span>
-        </div>
-      </div>
-
-
 
       <div class="project">
-        <h3><a href="#" class="project-link" target="_blank">A Better CALC</a></h3>
-        <p>Used R to clean and transform a Colleague CALC file into a tool for auditing payroll.</p>
-        <div>
-          <span class="tag" data-skill="R">R</span>
-          <span class="tag" data-skill="Payroll">Payroll</span>
-          <span class="tag" data-skill="Data Cleaning">Data Cleaning</span>
-          <span class="tag" data-skill="Audit">Audit</span>
-        </div>
+        <h3><a href="https://github.com/krisstrong/howto_bar_plot" target="_blank">A Better Bar Plot</a></h3>
+        <p>A quick guide on how to build a clean, effective bar plot.</p>
+      </div>
+
+      <div class="project">
+        <h3><a href="https://github.com/krisstrong/Dayforce_Properties_String" target="_blank">Dayforce Work Assignment String Tool</a></h3>
+        <p>
+          A lightweight single-page web tool that transforms user input into structured
+          Dayforce work assignment strings.
+        </p>
+      </div>
+
+      <div class="project">
+        <h3>A Better CALC</h3>
+        <p>
+          Used R to clean and transform a Colleague CALC file into a payroll auditing tool.
+        </p>
       </div>
     </section>
 
@@ -216,17 +257,14 @@
       <h2>Interesting Links</h2>
       <p>
         <a href="https://rweekly.org" target="_blank">R Weekly</a>
-		
-		<a href="https://projects.susielu.com/viz-palette?colors=[%22#ffd700%22,%22#ffb14e%22,%22#fa8775%22,%22#ea5f94%22,%22#cd34b5%22,%22#9d02d7%22,%22#0000ff%22]&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22normal%22" target="_blank">Viz Palette</a>
-		<a href="https://geoutil.com/?utm_campaign=Data_Elixir&utm_source=Data_Elixir_546"  target="_blank">Geo Tools</a>
+        <a href="https://colorpalette.pro/" target="_blank">ColorPalette Pro</a>
+        <a href="https://sronpersonalpages.nl/~pault/" target="_blank">Paul Tol's Notes</a>
+        <a href="https://projects.susielu.com/viz-palette" target="_blank">Viz Palette</a>
+        <a href="https://geoutil.com/" target="_blank">Geo Tools</a>
         <a href="https://flowingdata.com" target="_blank">FlowingData</a>
         <a href="https://datasciencecentral.com" target="_blank">Data Science Central</a>
         <a href="https://www.datacamp.com/" target="_blank">DataCamp</a>
-        <a
-          href="https://towardsdatascience.com/from-default-python-line-chart-to-journal-quality-infographics-80e3949eacc3/"
-          target="_blank"
-          >Better Line Charts in Python</a
-        >
+        <a href="https://towardsdatascience.com/from-default-python-line-chart-to-journal-quality-infographics-80e3949eacc3/" target="_blank">Better Line Charts in Python</a>
         <a href="https://datamgmtinedresearch.com/" target="_blank">Data Management in Ed Research</a>
         <a href="https://themegenerator.point-gmbh.com/en/Home" target="_blank">Theme Generator</a>
         <a href="https://www.sqlstyle.guide/" target="_blank">SQL Style Guide</a>
@@ -234,17 +272,14 @@
         <a href="https://exceljet.net/formulas" target="_blank">ExcelJet Formulas</a>
         <a href="http://web-accessibility.carnegiemuseums.org/design/color/" target="_blank">Accessible Color Design</a>
         <a href="https://datavizcatalogue.com/index.html" target="_blank">Data Viz Catalogue</a>
-        <a
-          href="https://www.tomforth.co.uk/circlepopulations/?utm_campaign=Data_Elixir&utm_source=Data_Elixir_424"
-          target="_blank"
-          >Circle Populations</a
-        >
+        <a href="https://www.tomforth.co.uk/circlepopulations/" target="_blank">Circle Populations</a>
       </p>
     </section>
 
     <footer>
       <p>&copy; 2025 Kris Strong</p>
     </footer>
+
   </div>
 </body>
 </html>
