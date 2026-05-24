@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kris Strong · Data Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:           #0D1520;
+      --color-surface:      #152032;
+      --color-surface-2:    #0F1B2D;
+      --color-border:       #243348;
+      --color-border-light: #1C2C40;
+
+      --color-text-primary:   #E2EBF5;
+      --color-text-secondary: #8AABCA;
+      --color-text-muted:     #4F6E8A;
+
+      --color-accent:       #1FBD9F;
+      --color-accent-light: #0D2E28;
+      --color-accent-dark:  #12907A;
+
+      --color-blue:         #4D9FE0;
+      --color-blue-light:   #0D1F35;
+
+      --font-heading: 'Fraunces', Georgia, serif;
+      --font-body:    'IBM Plex Sans', system-ui, sans-serif;
+
+      --sidebar: 300px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      background: var(--color-bg);
+      color: var(--color-text-secondary);
+      min-height: 100vh;
+      line-height: 1.65;
+    }
+
+    /* ── Layout ── */
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── Sidebar ── */
+    aside {
+      width: var(--sidebar);
+      min-width: var(--sidebar);
+      background: var(--color-surface-2);
+      border-right: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 3rem 2.5rem;
+      overflow-y: auto;
+    }
+
+    .sidebar-name {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--color-text-primary);
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .sidebar-title {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 2.5rem;
+      min-height: 1.2em;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      margin-bottom: auto;
+    }
+
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      padding: 0.5rem 0;
+      transition: color 0.2s;
+    }
+
+    .sidebar-nav a::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.2s, background 0.2s;
+    }
+
+    .sidebar-nav a:hover { color: var(--color-text-primary); }
+    .sidebar-nav a:hover::before { width: 32px; }
+
+    .sidebar-nav a.active {
+      color: var(--color-text-primary);
+    }
+    .sidebar-nav a.active::before {
+      width: 32px;
+      background: var(--color-accent);
+    }
+
+    .sidebar-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--color-border-light);
+    }
+
+    .sidebar-links a {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .sidebar-links a:hover { color: var(--color-accent); }
+
+    /* ── Main ── */
+    main {
+      flex: 1;
+      padding: 5rem 6rem 5rem 5rem;
+      max-width: 860px;
+    }
+
+    section { margin-bottom: 5rem; }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+      max-width: 60px;
+    }
+
+    /* ── About ── */
+    .about-text {
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--color-text-primary);
+      max-width: 580px;
+    }
+
+    .about-sub {
+      margin-top: 1.25rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      max-width: 520px;
+      line-height: 1.8;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-pill {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      background: var(--color-surface);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .skill-pill:hover {
+      border-color: var(--color-blue);
+      color: var(--color-blue);
+    }
+
+    .skill-pill.core {
+      background: var(--color-accent-light);
+      border-color: #174F42;
+      color: var(--color-accent);
+    }
+
+    .skill-pill.core:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    /* ── Projects ── */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--color-border-light);
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+
+    .project-item:first-child { border-top: 1px solid var(--color-border-light); }
+
+    .project-name {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--color-text-primary);
+      margin-bottom: 0.3rem;
+      transition: color 0.2s;
+    }
+
+    .project-item:hover .project-name { color: var(--color-accent); }
+
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      max-width: 420px;
+    }
+
+    .project-arrow {
+      font-size: 0.85rem;
+      color: var(--color-border);
+      margin-top: 0.25rem;
+      margin-left: 1rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .project-item:hover .project-arrow {
+      color: var(--color-accent);
+      transform: translate(3px, -2px);
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 0.67rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-blue);
+      margin-top: 0.5rem;
+    }
+
+    /* ── Links ── */
+    .links-category { margin-bottom: 2rem; }
+
+    .links-category-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.75rem;
+    }
+
+    .link-item {
+      font-size: 0.875rem;
+      color: var(--color-blue);
+      text-decoration: underline;
+      text-decoration-color: var(--color-border);
+      text-underline-offset: 3px;
+      transition: color 0.15s, text-decoration-color 0.15s;
+    }
+
+    .link-item:hover {
+      color: var(--color-accent);
+      text-decoration-color: var(--color-accent);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding-top: 2rem;
+      border-top: 1px solid var(--color-border-light);
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Load animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .sidebar-name,
+    .sidebar-title,
+    .sidebar-nav,
+    .sidebar-links {
+      opacity: 0;
+      animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .sidebar-name  { animation-delay: 0.05s; }
+    .sidebar-title { animation-delay: 0.15s; }
+    .sidebar-nav   { animation-delay: 0.25s; }
+    .sidebar-links { animation-delay: 0.35s; }
+
+    section {
+      opacity: 0;
+      animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    #about    { animation-delay: 0.3s; }
+    #skills   { animation-delay: 0.45s; }
+    #projects { animation-delay: 0.6s; }
+    #tools    { animation-delay: 0.75s; }
+
+    footer {
+      opacity: 0;
+      animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: 0.9s;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 800px) {
+      .layout { flex-direction: column; }
+
+      aside {
+        width: 100%;
+        min-width: 0;
+        position: static;
+        height: auto;
+        padding: 2rem 1.5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem 2rem;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .sidebar-title { margin-bottom: 0; }
+      .sidebar-nav { display: none; }
+      .sidebar-links { margin-top: 0; padding-top: 0; border-top: none; }
+
+      main {
+        padding: 2.5rem 1.5rem 4rem;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside>
+    <p class="sidebar-name">Kris<br>Strong</p>
+    <p class="sidebar-title"><span id="typed-title"></span><span id="type-cursor" style="display:inline-block;width:1px;height:0.85em;background:var(--color-accent);margin-left:2px;vertical-align:-1px;"></span></p>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#tools">Tools &amp; Links</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-links">
+      <a href="https://www.linkedin.com/in/krisstrong/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/krisstrong" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main>
+
+    <section id="about">
+      <p class="section-label">About</p>
+      <p class="about-text">I work at the intersection of data and decision-making — collecting it, cleaning it, and turning it into something people can actually use.</p>
+      <p class="about-sub">Currently a Systems Analyst – Data and Reporting at a Canadian university, where I support HR and institutional analytics through Power BI, SQL Server, and ETL pipelines. I'm interested in roles where the data work goes deeper.</p>
+    </section>
+
+    <section id="skills">
+      <p class="section-label">Skills</p>
+      <div class="skills-grid">
+        <span class="skill-pill core">SQL</span>
+        <span class="skill-pill core">Power BI</span>
+        <span class="skill-pill core">Python</span>
+        <span class="skill-pill core">ETL</span>
+        <span class="skill-pill core">Data Viz</span>
+        <span class="skill-pill">Excel</span>
+        <span class="skill-pill">Azure</span>
+        <span class="skill-pill">R</span>
+        <span class="skill-pill">Data Cleaning</span>
+        <span class="skill-pill">HR Analytics</span>
+        <span class="skill-pill">Dayforce</span>
+        <span class="skill-pill">Colleague</span>
+        <span class="skill-pill">Informer</span>
+        <span class="skill-pill">Git</span>
+      </div>
+    </section>
+
+    <section id="projects">
+      <p class="section-label">Projects</p>
+      <div class="projects-list">
+
+        <a class="project-item" href="https://github.com/krisstrong/howto_line_plot" target="_blank" rel="noopener">
+          <div>
+            <p class="project-name">A Better Line Plot</p>
+            <p class="project-desc">A practical guide to building clean, effective line charts — covering design decisions most defaults get wrong.</p>
+            <span class="project-tag">Data Viz · Python</span>
+          </div>
+          <span class="project-arrow">↗</span>
+        </a>
+
+        <a class="project-item" href="https://github.com/krisstrong/howto_bar_plot" target="_blank" rel="noopener">
+          <div>
+            <p class="project-name">A Better Bar Plot</p>
+            <p class="project-desc">Companion guide to the line plot series. Focuses on decluttering, labelling, and encoding the right variable.</p>
+            <span class="project-tag">Data Viz · Python</span>
+          </div>
+          <span class="project-arrow">↗</span>
+        </a>
+
+        <a class="project-item" href="https://github.com/krisstrong/Dayforce_Properties_String" target="_blank" rel="noopener">
+          <div>
+            <p class="project-name">Dayforce Work Assignment String Tool</p>
+            <p class="project-desc">A lightweight single-page web tool that generates structured work assignment strings for Dayforce HCM configuration.</p>
+            <span class="project-tag">Web Tool · JavaScript</span>
+          </div>
+          <span class="project-arrow">↗</span>
+        </a>
+
+        <div class="project-item" style="cursor: default;">
+          <div>
+            <p class="project-name">A Better CALC</p>
+            <p class="project-desc">Used R to clean and reshape a Colleague CALC export into a structured payroll auditing tool for institutional reporting.</p>
+            <span class="project-tag">R · HR Analytics</span>
+          </div>
+          <span class="project-arrow" style="opacity:0;">↗</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="tools">
+      <p class="section-label">Tools &amp; Links</p>
+
+      <div class="links-category">
+        <p class="links-category-label">My assets</p>
+        <div class="links-row">
+          <a class="link-item" href="https://github.com/krisstrong/project_assets/blob/main/project_files/color_palettes.html" target="_blank" rel="noopener">Colour Palettes</a>
+          <a class="link-item" href="https://github.com/krisstrong/project_assets/blob/main/project_files/folder%20structure.txt" target="_blank" rel="noopener">Folder Structure</a>
+          <a class="link-item" href="https://github.com/krisstrong/project_assets/blob/main/project_files/DATA_REQUESTS_README.md" target="_blank" rel="noopener">Data Request Tracker</a>
+        </div>
+      </div>
+
+      <div class="links-category">
+        <p class="links-category-label">Data viz</p>
+        <div class="links-row">
+          <a class="link-item" href="https://colorpalette.pro/" target="_blank" rel="noopener">ColorPalette Pro</a>
+          <a class="link-item" href="https://sronpersonalpages.nl/~pault/" target="_blank" rel="noopener">Paul Tol's Notes</a>
+          <a class="link-item" href="https://projects.susielu.com/viz-palette" target="_blank" rel="noopener">Viz Palette</a>
+          <a class="link-item" href="http://web-accessibility.carnegiemuseums.org/design/color/" target="_blank" rel="noopener">Accessible Color Design</a>
+          <a class="link-item" href="https://www.rawgraphs.io/" target="_blank" rel="noopener">RAWGraphs</a>
+          <a class="link-item" href="https://datavizcatalogue.com/index.html" target="_blank" rel="noopener">Data Viz Catalogue</a>
+          <a class="link-item" href="https://themegenerator.point-gmbh.com/en/Home" target="_blank" rel="noopener">Theme Generator</a>
+          <a class="link-item" href="https://www.tomforth.co.uk/circlepopulations/" target="_blank" rel="noopener">Circle Populations</a>
+        </div>
+      </div>
+
+      <div class="links-category">
+        <p class="links-category-label">Reading &amp; learning</p>
+        <div class="links-row">
+          <a class="link-item" href="https://rweekly.org" target="_blank" rel="noopener">R Weekly</a>
+          <a class="link-item" href="https://flowingdata.com" target="_blank" rel="noopener">FlowingData</a>
+          <a class="link-item" href="https://pudding.cool/" target="_blank" rel="noopener">The Pudding</a>
+          <a class="link-item" href="https://datamgmtinedresearch.com/" target="_blank" rel="noopener">Data Mgmt in Ed Research</a>
+          <a class="link-item" href="https://www.sqlstyle.guide/" target="_blank" rel="noopener">SQL Style Guide</a>
+          <a class="link-item" href="https://towardsdatascience.com/from-default-python-line-chart-to-journal-quality-infographics-80e3949eacc3/" target="_blank" rel="noopener">Better Line Charts in Python</a>
+          <a class="link-item" href="https://www.datacamp.com/" target="_blank" rel="noopener">DataCamp</a>
+        </div>
+      </div>
+
+      <div class="links-category">
+        <p class="links-category-label">Data &amp; geo tools</p>
+        <div class="links-row">
+          <a class="link-item" href="https://open.canada.ca/en/using-open-data" target="_blank" rel="noopener">Open Canada Data</a>
+          <a class="link-item" href="https://geoutil.com/" target="_blank" rel="noopener">Geo Tools</a>
+          <a class="link-item" href="https://qgis.org/" target="_blank" rel="noopener">QGIS</a>
+          <a class="link-item" href="https://exceljet.net/formulas" target="_blank" rel="noopener">ExcelJet Formulas</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Kris Strong · Kentville, NS</p>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  const phrases = ['Data Analyst', 'Visual Storyteller', 'Power BI Enthusiast'];
+  const el = document.getElementById('typed-title');
+  const cursor = document.getElementById('type-cursor');
+  let pi = 0, ci = 0, deleting = false, wait = 0;
+
+  function tick() {
+    const word = phrases[pi];
+    if (wait > 0) { wait--; setTimeout(tick, 80); return; }
+    if (!deleting) {
+      el.textContent = word.slice(0, ++ci);
+      if (ci === word.length) { wait = 22; deleting = true; }
+      setTimeout(tick, 90);
+    } else {
+      el.textContent = word.slice(0, --ci);
+      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; wait = 4; }
+      setTimeout(tick, 48);
+    }
+  }
+
+  setTimeout(tick, 500);
+  setInterval(() => { cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0'; }, 530);
+
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.sidebar-nav a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.35 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
