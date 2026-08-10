@@ -3,33 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kris Strong · Data Analyst</title>
+  <title>Kris Strong · Data &amp; Business Analyst</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --color-bg:           #0D1520;
-      --color-surface:      #152032;
-      --color-surface-2:    #0F1B2D;
-      --color-border:       #243348;
-      --color-border-light: #1C2C40;
+      /* — krisstrong-brand tokens — */
+      --navy-900: #0A1428;   /* page background        */
+      --navy-800: #0F1E3D;   /* base surface / sidebar */
+      --navy-700: #17284A;   /* elevated / soft divider */
+      --navy-600: #22355C;   /* hairline / border      */
 
-      --color-text-primary:   #E2EBF5;
-      --color-text-secondary: #8AABCA;
-      --color-text-muted:     #4F6E8A;
+      --ink-100: #EAEEF7;    /* primary text           */
+      --ink-300: #9FADC9;    /* secondary text         */
+      --ink-500: #5E6E92;    /* captions / muted       */
 
-      --color-accent:       #1FBD9F;
-      --color-accent-light: #0D2E28;
-      --color-accent-dark:  #12907A;
+      --amber:    #F5A623;   /* hero accent (the 10%)  */
+      --amber-hi: #FFC24E;   /* hover                  */
+      --amber-lo: #D98A12;   /* pressed                */
 
-      --color-blue:         #4D9FE0;
-      --color-blue-light:   #0D1F35;
+      --viz-2: #4F9DE0;      /* categorical secondary  */
 
-      --font-heading: 'Fraunces', Georgia, serif;
+      --font-display: 'Space Grotesk', system-ui, sans-serif;
       --font-body:    'IBM Plex Sans', system-ui, sans-serif;
+      --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
 
       --sidebar: 300px;
       --radius-sm: 4px;
@@ -41,8 +41,8 @@
     body {
       font-family: var(--font-body);
       font-weight: 400;
-      background: var(--color-bg);
-      color: var(--color-text-secondary);
+      background: var(--navy-900);
+      color: var(--ink-300);
       min-height: 100vh;
       line-height: 1.65;
     }
@@ -57,8 +57,8 @@
     aside {
       width: var(--sidebar);
       min-width: var(--sidebar);
-      background: var(--color-surface-2);
-      border-right: 1px solid var(--color-border);
+      background: var(--navy-800);
+      border-right: 1px solid var(--navy-600);
       position: sticky;
       top: 0;
       height: 100vh;
@@ -69,22 +69,22 @@
     }
 
     .sidebar-name {
-      font-family: var(--font-heading);
+      font-family: var(--font-display);
       font-size: 2rem;
-      font-weight: 600;
+      font-weight: 700;
       line-height: 1.2;
-      color: var(--color-text-primary);
+      color: var(--ink-100);
       margin-bottom: 0.4rem;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
     }
 
     .sidebar-title {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--color-accent);
+      color: var(--amber);
       margin-bottom: 2.5rem;
       min-height: 1.2em;
     }
@@ -105,7 +105,7 @@
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--color-text-muted);
+      color: var(--ink-500);
       text-decoration: none;
       padding: 0.5rem 0;
       transition: color 0.2s;
@@ -120,36 +120,54 @@
       transition: width 0.2s, background 0.2s;
     }
 
-    .sidebar-nav a:hover { color: var(--color-text-primary); }
+    .sidebar-nav a:hover { color: var(--ink-100); }
     .sidebar-nav a:hover::before { width: 32px; }
 
     .sidebar-nav a.active {
-      color: var(--color-text-primary);
+      color: var(--ink-100);
     }
     .sidebar-nav a.active::before {
       width: 32px;
-      background: var(--color-accent);
+      background: var(--amber);
     }
+
+    .sidebar-avatar {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: var(--navy-700);
+      border: 1px solid var(--navy-600);
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .sidebar-avatar svg { width: 30px; height: 30px; }
 
     .sidebar-links {
       display: flex;
-      gap: 1rem;
+      gap: 1.25rem;
       margin-top: 3rem;
       padding-top: 2rem;
-      border-top: 1px solid var(--color-border-light);
+      border-top: 1px solid var(--navy-700);
     }
 
     .sidebar-links a {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
       font-size: 0.72rem;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--color-text-muted);
+      color: var(--ink-500);
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    .sidebar-links a:hover { color: var(--color-accent); }
+    .sidebar-links svg { width: 15px; height: 15px; flex: none; }
+
+    .sidebar-links a:hover { color: var(--amber); }
 
     /* ── Main ── */
     main {
@@ -161,11 +179,12 @@
     section { margin-bottom: 5rem; }
 
     .section-label {
+      font-family: var(--font-mono);
       font-size: 0.7rem;
       font-weight: 500;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--color-accent);
+      color: var(--amber);
       margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
@@ -176,26 +195,171 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: var(--color-border);
+      background: var(--navy-600);
       max-width: 60px;
     }
 
+    .section-label svg { width: 14px; height: 14px; flex: none; }
+
+    /* ── Hero chart ── */
+    .hero-chart {
+      position: relative;
+      margin-bottom: 3.5rem;
+      padding: 1.1rem 1.3rem 0.7rem;
+      border: 1px solid var(--navy-600);
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, var(--navy-800), var(--navy-900));
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+    }
+
+    .hero-cap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-cap-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-500);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-cap-label::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--amber);
+      flex: none;
+    }
+
+    .hero-trend {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .hero-svg { display: block; width: 100%; height: auto; }
+
+    .hero-grid line { stroke: var(--navy-600); stroke-width: 1; opacity: 0.5; }
+
+    .hero-area {
+      fill: url(#heroFill);
+      opacity: 1;
+      animation: heroFade 1.1s ease 1.15s backwards;
+    }
+
+    .hero-line {
+      fill: none;
+      stroke: var(--amber);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 0;
+      animation: heroDraw 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.45s backwards;
+    }
+
+    .hero-dot { opacity: 1; animation: heroFade 0.5s ease 1.85s backwards; }
+
+    .hero-svg text { font-family: var(--font-mono); }
+    .hero-axis { font-size: 10px; fill: var(--ink-500); letter-spacing: 0.08em; }
+    .hero-ms-label { font-size: 11px; font-weight: 500; fill: var(--ink-100); letter-spacing: 0.04em; }
+    .hero-end-label { font-size: 11px; font-weight: 500; fill: var(--amber); letter-spacing: 0.06em; }
+    .hero-ms circle { fill: var(--amber); }
+    .hero-ms-guide { stroke: var(--amber); stroke-width: 1; stroke-dasharray: 2 3; opacity: 0.4; }
+
+    .hero-ms, .hero-end-label, .hero-axis {
+      opacity: 1;
+      animation: heroFade 0.6s ease 1.9s backwards;
+    }
+
+    @keyframes heroDraw { from { stroke-dashoffset: 1; } }
+    @keyframes heroFade { from { opacity: 0; } }
+
     /* ── About ── */
     .about-text {
-      font-family: var(--font-heading);
+      font-family: var(--font-display);
       font-size: 1.55rem;
-      font-weight: 400;
-      line-height: 1.55;
-      color: var(--color-text-primary);
-      max-width: 580px;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: -0.015em;
+      color: var(--ink-100);
+      max-width: 600px;
     }
 
     .about-sub {
       margin-top: 1.25rem;
       font-size: 0.9375rem;
-      color: var(--color-text-secondary);
-      max-width: 520px;
+      color: var(--ink-300);
+      max-width: 560px;
       line-height: 1.8;
+    }
+
+    .about-note {
+      margin-top: 1.5rem;
+      font-size: 0.9375rem;
+      color: var(--ink-300);
+      max-width: 560px;
+      line-height: 1.8;
+    }
+
+    .note-label {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-500);
+      display: inline-block;
+      margin-right: 0.55rem;
+    }
+
+    /* ── Stats (KPI tiles) ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.9rem;
+      margin-top: 2.75rem;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      padding: 1.1rem 1.15rem;
+      background: var(--navy-800);
+      border: 1px solid var(--navy-600);
+      border-radius: var(--radius-md);
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--amber);
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-500);
     }
 
     /* ── Skills ── */
@@ -212,86 +376,118 @@
       letter-spacing: 0.05em;
       padding: 0.35rem 0.8rem;
       border-radius: var(--radius-sm);
-      border: 1px solid var(--color-border);
-      color: var(--color-text-muted);
-      background: var(--color-surface);
+      border: 1px solid var(--navy-600);
+      color: var(--ink-500);
+      background: var(--navy-800);
       transition: border-color 0.2s, color 0.2s;
     }
 
     .skill-pill:hover {
-      border-color: var(--color-blue);
-      color: var(--color-blue);
+      border-color: var(--viz-2);
+      color: var(--viz-2);
     }
 
     .skill-pill.core {
-      background: var(--color-accent-light);
-      border-color: #174F42;
-      color: var(--color-accent);
+      background: transparent;
+      border-color: var(--amber-lo);
+      color: var(--amber);
     }
 
     .skill-pill.core:hover {
-      border-color: var(--color-accent);
-      color: var(--color-accent);
+      border-color: var(--amber);
+      color: var(--amber-hi);
     }
 
-    /* ── Projects ── */
-    .projects-list {
+    /* ── Projects (dashboard tiles) ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .project-card {
       display: flex;
       flex-direction: column;
+      padding: 1.4rem 1.5rem;
+      background: var(--navy-800);
+      border: 1px solid var(--navy-600);
+      border-radius: var(--radius-md);
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
     }
 
-    .project-item {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: start;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--color-border-light);
-      text-decoration: none;
-      color: inherit;
-      position: relative;
+    .project-card:hover {
+      border-color: #2E4670;
+      background: #12234A;
+      transform: translateY(-2px);
     }
-
-    .project-item:first-child { border-top: 1px solid var(--color-border-light); }
 
     .project-name {
-      font-family: var(--font-heading);
-      font-size: 1.15rem;
-      font-weight: 400;
-      color: var(--color-text-primary);
-      margin-bottom: 0.3rem;
-      transition: color 0.2s;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--ink-100);
+      margin-bottom: 0.5rem;
     }
-
-    .project-item:hover .project-name { color: var(--color-accent); }
 
     .project-desc {
       font-size: 0.875rem;
-      color: var(--color-text-secondary);
+      color: var(--ink-300);
       line-height: 1.6;
-      max-width: 420px;
-    }
-
-    .project-arrow {
-      font-size: 0.85rem;
-      color: var(--color-border);
-      margin-top: 0.25rem;
-      margin-left: 1rem;
-      transition: color 0.2s, transform 0.2s;
-    }
-
-    .project-item:hover .project-arrow {
-      color: var(--color-accent);
-      transform: translate(3px, -2px);
+      margin-bottom: 1.1rem;
     }
 
     .project-tag {
-      display: inline-block;
-      font-size: 0.67rem;
+      margin-top: auto;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--color-blue);
-      margin-top: 0.5rem;
+      color: var(--viz-2);
+    }
+
+    /* ── Feedback ── */
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .quote-card {
+      display: flex;
+      flex-direction: column;
+      padding: 1.4rem 1.6rem;
+      background: var(--navy-800);
+      border: 1px solid var(--navy-600);
+      border-radius: var(--radius-md);
+    }
+
+    .quote-card::before {
+      content: '\201C';
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 2.6rem;
+      line-height: 0.6;
+      color: var(--amber);
+      opacity: 0.55;
+      margin-bottom: 0.6rem;
+    }
+
+    .quote-text {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--ink-100);
+      margin-bottom: 1.1rem;
+    }
+
+    .quote-by {
+      margin-top: auto;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-500);
     }
 
     /* ── Links ── */
@@ -302,7 +498,7 @@
       font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--color-text-muted);
+      color: var(--ink-500);
       margin-bottom: 0.75rem;
     }
 
@@ -314,24 +510,24 @@
 
     .link-item {
       font-size: 0.875rem;
-      color: var(--color-blue);
+      color: var(--viz-2);
       text-decoration: underline;
-      text-decoration-color: var(--color-border);
+      text-decoration-color: var(--navy-600);
       text-underline-offset: 3px;
       transition: color 0.15s, text-decoration-color 0.15s;
     }
 
     .link-item:hover {
-      color: var(--color-accent);
-      text-decoration-color: var(--color-accent);
+      color: var(--amber);
+      text-decoration-color: var(--amber);
     }
 
     /* ── Footer ── */
     footer {
       padding-top: 2rem;
-      border-top: 1px solid var(--color-border-light);
+      border-top: 1px solid var(--navy-700);
       font-size: 0.78rem;
-      color: var(--color-text-muted);
+      color: var(--ink-500);
       letter-spacing: 0.04em;
     }
 
@@ -341,6 +537,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    .sidebar-avatar,
     .sidebar-name,
     .sidebar-title,
     .sidebar-nav,
@@ -348,10 +545,11 @@
       opacity: 0;
       animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
-    .sidebar-name  { animation-delay: 0.05s; }
-    .sidebar-title { animation-delay: 0.15s; }
-    .sidebar-nav   { animation-delay: 0.25s; }
-    .sidebar-links { animation-delay: 0.35s; }
+    .sidebar-avatar { animation-delay: 0.02s; }
+    .sidebar-name  { animation-delay: 0.08s; }
+    .sidebar-title { animation-delay: 0.18s; }
+    .sidebar-nav   { animation-delay: 0.28s; }
+    .sidebar-links { animation-delay: 0.38s; }
 
     section {
       opacity: 0;
@@ -360,12 +558,31 @@
     #about    { animation-delay: 0.3s; }
     #skills   { animation-delay: 0.45s; }
     #projects { animation-delay: 0.6s; }
-    #tools    { animation-delay: 0.75s; }
+    #feedback { animation-delay: 0.75s; }
+    #tools    { animation-delay: 0.9s; }
 
     footer {
       opacity: 0;
       animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-      animation-delay: 0.9s;
+      animation-delay: 1.05s;
+    }
+
+    /* ── Focus ring (brand: amber, visible) ── */
+    a:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .sidebar-avatar, .sidebar-name, .sidebar-title, .sidebar-nav, .sidebar-links,
+      .hero-chart, section, footer { opacity: 1 !important; }
     }
 
     /* ── Mobile ── */
@@ -383,7 +600,7 @@
         align-items: center;
         gap: 1rem 2rem;
         border-right: none;
-        border-bottom: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--navy-600);
       }
 
       .sidebar-title { margin-bottom: 0; }
@@ -394,6 +611,10 @@
         padding: 2.5rem 1.5rem 4rem;
         max-width: 100%;
       }
+
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: 1fr; }
+      .quotes-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -403,21 +624,34 @@
 
   <!-- Sidebar -->
   <aside>
+    <div class="sidebar-avatar" aria-hidden="true">
+      <svg viewBox="0 0 30 30" fill="none">
+        <polyline points="4,20 9,16 14,18 20,10 26,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="26" cy="6" r="2.2" fill="currentColor"/>
+      </svg>
+    </div>
     <p class="sidebar-name">Kris<br>Strong</p>
-    <p class="sidebar-title"><span id="typed-title"></span><span id="type-cursor" style="display:inline-block;width:1px;height:0.85em;background:var(--color-accent);margin-left:2px;vertical-align:-1px;"></span></p>
+    <p class="sidebar-title"><span id="typed-title"></span><span id="type-cursor" style="display:inline-block;width:1px;height:0.85em;background:var(--amber);margin-left:2px;vertical-align:-1px;"></span></p>
 
     <nav>
       <ul class="sidebar-nav">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#feedback">Feedback</a></li>
         <li><a href="#tools">Tools &amp; Links</a></li>
       </ul>
     </nav>
 
     <div class="sidebar-links">
-      <a href="https://www.linkedin.com/in/krisstrong/" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a href="https://github.com/krisstrong" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/krisstrong/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21H17v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/krisstrong" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.92c.575.106.79-.25.79-.556 0-.274-.01-1.002-.015-1.967-3.196.695-3.87-1.54-3.87-1.54-.523-1.328-1.277-1.682-1.277-1.682-1.044-.714.08-.699.08-.699 1.155.082 1.762 1.186 1.762 1.186 1.026 1.758 2.693 1.25 3.35.955.104-.743.402-1.25.73-1.538-2.552-.29-5.235-1.276-5.235-5.677 0-1.254.448-2.28 1.183-3.084-.119-.29-.513-1.46.112-3.043 0 0 .965-.309 3.163 1.178a11 11 0 0 1 5.76 0c2.196-1.487 3.16-1.178 3.16-1.178.626 1.583.232 2.753.114 3.043.737.804 1.182 1.83 1.182 3.084 0 4.412-2.687 5.383-5.246 5.668.413.355.78 1.056.78 2.128 0 1.537-.014 2.776-.014 3.153 0 .309.21.667.795.554A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+        GitHub
+      </a>
     </div>
   </aside>
 
@@ -425,76 +659,95 @@
   <main>
 
     <section id="about">
-      <p class="section-label">About</p>
-      <p class="about-text">I work at the intersection of data and decision-making — collecting it, cleaning it, and turning it into something people can actually use.</p>
-      <p class="about-sub">Currently a Systems Analyst – Data and Reporting at a Canadian university, where I support HR and institutional analytics through Power BI, SQL Server, and ETL pipelines. I'm interested in roles where the data work goes deeper.</p>
+      <p class="section-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.3 3-5.5 7-5.5s7 2.2 7 5.5"/></svg>About</p>
+      <p class="about-text">I turn messy operational data into decisions leadership acts on.</p>
+      <p class="about-sub">I'm a Systems Analyst – Data &amp; Reporting at Acadia University, building a centralized data warehouse and the dashboards leadership runs on. Five-plus years and a 1,000+ employee organization's worth of SQL, Python, and Power BI — and lately, an early mover on AI-assisted analytics with Claude Code and custom agent skills.</p>
+      <p class="about-note"><span class="note-label">Right now</span>Exploring how far AI-assisted analytics can go — building reporting pipelines with custom agent skills, and helping shape responsible AI use on our Technology Services AI Working Group.</p>
+
+      <div class="stats-row">
+        <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Completed Projects</span></div>
+        <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Reports Developed</span></div>
+        <div class="stat"><span class="stat-num">12+</span><span class="stat-label">Dashboards</span></div>
+        <div class="stat"><span class="stat-num">14</span><span class="stat-label">Teams Supported</span></div>
+      </div>
     </section>
 
     <section id="skills">
-      <p class="section-label">Skills</p>
+      <p class="section-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 13l9 5 9-5"/></svg>Skills</p>
       <div class="skills-grid">
         <span class="skill-pill core">SQL</span>
         <span class="skill-pill core">Power BI</span>
         <span class="skill-pill core">Python</span>
-        <span class="skill-pill core">ETL</span>
+        <span class="skill-pill core">R</span>
         <span class="skill-pill core">Data Viz</span>
-        <span class="skill-pill">Excel</span>
-        <span class="skill-pill">Azure</span>
-        <span class="skill-pill">R</span>
-        <span class="skill-pill">Data Cleaning</span>
-        <span class="skill-pill">HR Analytics</span>
-        <span class="skill-pill">Dayforce</span>
-        <span class="skill-pill">Colleague</span>
-        <span class="skill-pill">Informer</span>
+        <span class="skill-pill">Power Query</span>
+        <span class="skill-pill">Informer BI</span>
+        <span class="skill-pill">SSMS</span>
+        <span class="skill-pill">BigQuery</span>
+        <span class="skill-pill">Dayforce HCM</span>
+        <span class="skill-pill">Colleague HRIS</span>
+        <span class="skill-pill">Forecasting</span>
+        <span class="skill-pill">Storytelling</span>
+        <span class="skill-pill">VS Code</span>
         <span class="skill-pill">Git</span>
       </div>
     </section>
 
     <section id="projects">
-      <p class="section-label">Projects</p>
-      <div class="projects-list">
+      <p class="section-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="20" x2="21" y2="20"/><line x1="7" y1="20" x2="7" y2="13"/><line x1="12" y1="20" x2="12" y2="6"/><line x1="17" y1="20" x2="17" y2="10"/></svg>Projects</p>
+      <div class="projects-grid">
 
-        <a class="project-item" href="https://github.com/krisstrong/howto_line_plot" target="_blank" rel="noopener">
-          <div>
-            <p class="project-name">A Better Line Plot</p>
-            <p class="project-desc">A practical guide to building clean, effective line charts — covering design decisions most defaults get wrong.</p>
-            <span class="project-tag">Data Viz · Python</span>
-          </div>
-          <span class="project-arrow">↗</span>
-        </a>
+        <div class="project-card">
+          <p class="project-name">HR Retirement &amp; Succession Model</p>
+          <p class="project-desc">A Power BI model built from pension data, projecting 10-year retirement trends by sector, group, and department to support succession planning.</p>
+          <span class="project-tag">Power BI · Forecasting</span>
+        </div>
 
-        <a class="project-item" href="https://github.com/krisstrong/howto_bar_plot" target="_blank" rel="noopener">
-          <div>
-            <p class="project-name">A Better Bar Plot</p>
-            <p class="project-desc">Companion guide to the line plot series. Focuses on decluttering, labelling, and encoding the right variable.</p>
-            <span class="project-tag">Data Viz · Python</span>
-          </div>
-          <span class="project-arrow">↗</span>
-        </a>
+        <div class="project-card">
+          <p class="project-name">Campus 4-Day Work Week Analysis</p>
+          <p class="project-desc">Analyzed five years of sick and vacation data to build a data-supported narrative that led Senior Leadership to continue the program.</p>
+          <span class="project-tag">Power BI · Analysis</span>
+        </div>
 
-        <a class="project-item" href="https://github.com/krisstrong/Dayforce_Properties_String" target="_blank" rel="noopener">
-          <div>
-            <p class="project-name">Dayforce Work Assignment String Tool</p>
-            <p class="project-desc">A lightweight single-page web tool that generates structured work assignment strings for Dayforce HCM configuration.</p>
-            <span class="project-tag">Web Tool · JavaScript</span>
-          </div>
-          <span class="project-arrow">↗</span>
-        </a>
+        <div class="project-card">
+          <p class="project-name">MPHEC Reporting Dashboard</p>
+          <p class="project-desc">A provincial reporting dashboard built with Claude Code and custom agent skills to automate and document a complex data pipeline.</p>
+          <span class="project-tag">Power BI · AI-Assisted</span>
+        </div>
 
-        <div class="project-item" style="cursor: default;">
-          <div>
-            <p class="project-name">A Better CALC</p>
-            <p class="project-desc">Used R to clean and reshape a Colleague CALC export into a structured payroll auditing tool for institutional reporting.</p>
-            <span class="project-tag">R · HR Analytics</span>
-          </div>
-          <span class="project-arrow" style="opacity:0;">↗</span>
+        <div class="project-card">
+          <p class="project-name">Dayforce Payroll Migration</p>
+          <p class="project-desc">Extracted a year of payroll data via SQL and built custom migration reports and dashboards used campus-wide.</p>
+          <span class="project-tag">SQL · Power BI</span>
         </div>
 
       </div>
     </section>
 
+    <section id="feedback">
+      <p class="section-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8 8 0 0 1-8 8H7l-4 3v-3a8 8 0 1 1 18-7.5Z"/></svg>Feedback</p>
+      <div class="quotes-grid">
+
+        <blockquote class="quote-card">
+          <p class="quote-text">I wasn't joking — this really does feel miracle-worthy. Thanks for figuring it out and turning it into something very usable. Having these dashboards can have a huge impact on both retention and recruitment work.</p>
+          <footer class="quote-by">On the HR dashboards</footer>
+        </blockquote>
+
+        <blockquote class="quote-card">
+          <p class="quote-text">Thanks for the presentation today — the work you've done in Power BI is exceptional.</p>
+          <footer class="quote-by">After a Power BI presentation</footer>
+        </blockquote>
+
+        <blockquote class="quote-card">
+          <p class="quote-text">Amazing!! Thank you Kris! I will be diving into this wholeheartedly!</p>
+          <footer class="quote-by">On a delivered dashboard</footer>
+        </blockquote>
+
+      </div>
+    </section>
+
     <section id="tools">
-      <p class="section-label">Tools &amp; Links</p>
+      <p class="section-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 14.5 14.5 9.5"/><path d="M11 6.5 12.5 5a4 4 0 0 1 5.7 5.7l-1.5 1.5"/><path d="M13 17.5 11.5 19a4 4 0 0 1-5.7-5.7l1.5-1.5"/></svg>Tools &amp; Links</p>
 
       <div class="links-category">
         <p class="links-category-label">My assets</p>
@@ -551,7 +804,7 @@
 </div>
 
 <script>
-  const phrases = ['Data Analyst', 'Visual Storyteller', 'Power BI Enthusiast'];
+  const phrases = ['Data & Business Analyst', 'Dashboard Builder', 'AI-Assisted Analytics'];
   const el = document.getElementById('typed-title');
   const cursor = document.getElementById('type-cursor');
   let pi = 0, ci = 0, deleting = false, wait = 0;
