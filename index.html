@@ -398,46 +398,38 @@
       color: var(--amber-hi);
     }
 
-    /* ── Projects (dashboard tiles) ── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-
-    .project-card {
+    /* ── Projects (editorial list) ── */
+    .projects-list {
       display: flex;
       flex-direction: column;
-      padding: 1.4rem 1.5rem;
-      background: var(--navy-800);
-      border: 1px solid var(--navy-600);
-      border-radius: var(--radius-md);
-      transition: border-color 0.2s, transform 0.2s, background 0.2s;
     }
 
-    .project-card:hover {
-      border-color: #2E4670;
-      background: #12234A;
-      transform: translateY(-2px);
+    .project-item {
+      padding: 1.6rem 0;
+      border-top: 1px solid var(--navy-700);
+    }
+
+    .project-item:last-child {
+      border-bottom: 1px solid var(--navy-700);
     }
 
     .project-name {
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 500;
       color: var(--ink-100);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .project-desc {
-      font-size: 0.875rem;
+      font-size: 0.9rem;
       color: var(--ink-300);
-      line-height: 1.6;
-      margin-bottom: 1.1rem;
+      line-height: 1.65;
+      max-width: 560px;
+      margin-bottom: 0.6rem;
     }
 
     .project-tag {
-      margin-top: auto;
       font-family: var(--font-mono);
       font-size: 0.66rem;
       font-weight: 500;
@@ -446,42 +438,45 @@
       color: var(--viz-2);
     }
 
-    /* ── Feedback ── */
-    .quotes-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-
-    .quote-card {
+    /* ── Feedback (editorial pull-quotes) ── */
+    .quotes-list {
       display: flex;
       flex-direction: column;
-      padding: 1.4rem 1.6rem;
-      background: var(--navy-800);
-      border: 1px solid var(--navy-600);
-      border-radius: var(--radius-md);
     }
 
-    .quote-card::before {
+    .quote-item {
+      padding: 2rem 0;
+      border-top: 1px solid var(--navy-700);
+    }
+
+    .quote-item:last-child {
+      border-bottom: 1px solid var(--navy-700);
+    }
+
+    .quote-item::before {
       content: '\201C';
       font-family: var(--font-display);
       font-weight: 700;
       font-size: 2.6rem;
-      line-height: 0.6;
+      line-height: 0.8;
       color: var(--amber);
-      opacity: 0.55;
-      margin-bottom: 0.6rem;
+      opacity: 0.5;
+      display: block;
+      margin-bottom: 0.5rem;
     }
 
     .quote-text {
-      font-size: 0.98rem;
-      line-height: 1.7;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.55;
+      letter-spacing: -0.01em;
       color: var(--ink-100);
-      margin-bottom: 1.1rem;
+      max-width: 660px;
+      margin-bottom: 0.9rem;
     }
 
     .quote-by {
-      margin-top: auto;
       font-family: var(--font-mono);
       font-size: 0.66rem;
       font-weight: 500;
@@ -613,8 +608,6 @@
       }
 
       .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .projects-grid { grid-template-columns: 1fr; }
-      .quotes-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -695,27 +688,27 @@
 
     <section id="projects">
       <p class="section-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="20" x2="21" y2="20"/><line x1="7" y1="20" x2="7" y2="13"/><line x1="12" y1="20" x2="12" y2="6"/><line x1="17" y1="20" x2="17" y2="10"/></svg>Projects</p>
-      <div class="projects-grid">
+      <div class="projects-list">
 
-        <div class="project-card">
+        <div class="project-item">
           <p class="project-name">HR Retirement &amp; Succession Model</p>
           <p class="project-desc">A Power BI model built from pension data, projecting 10-year retirement trends by sector, group, and department to support succession planning.</p>
           <span class="project-tag">Power BI · Forecasting</span>
         </div>
 
-        <div class="project-card">
+        <div class="project-item">
           <p class="project-name">Campus 4-Day Work Week Analysis</p>
           <p class="project-desc">Analyzed five years of sick and vacation data to build a data-supported narrative that led Senior Leadership to continue the program.</p>
           <span class="project-tag">Power BI · Analysis</span>
         </div>
 
-        <div class="project-card">
+        <div class="project-item">
           <p class="project-name">MPHEC Reporting Dashboard</p>
           <p class="project-desc">A provincial reporting dashboard built with Claude Code and custom agent skills to automate and document a complex data pipeline.</p>
           <span class="project-tag">Power BI · AI-Assisted</span>
         </div>
 
-        <div class="project-card">
+        <div class="project-item">
           <p class="project-name">Dayforce Payroll Migration</p>
           <p class="project-desc">Extracted a year of payroll data via SQL and built custom migration reports and dashboards used campus-wide.</p>
           <span class="project-tag">SQL · Power BI</span>
@@ -726,19 +719,19 @@
 
     <section id="feedback">
       <p class="section-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8 8 0 0 1-8 8H7l-4 3v-3a8 8 0 1 1 18-7.5Z"/></svg>Feedback</p>
-      <div class="quotes-grid">
+      <div class="quotes-list">
 
-        <blockquote class="quote-card">
+        <blockquote class="quote-item">
           <p class="quote-text">I wasn't joking — this really does feel miracle-worthy. Thanks for figuring it out and turning it into something very usable. Having these dashboards can have a huge impact on both retention and recruitment work.</p>
           <footer class="quote-by">On the HR dashboards</footer>
         </blockquote>
 
-        <blockquote class="quote-card">
+        <blockquote class="quote-item">
           <p class="quote-text">Thanks for the presentation today — the work you've done in Power BI is exceptional.</p>
           <footer class="quote-by">After a Power BI presentation</footer>
         </blockquote>
 
-        <blockquote class="quote-card">
+        <blockquote class="quote-item">
           <p class="quote-text">Amazing!! Thank you Kris! I will be diving into this wholeheartedly!</p>
           <footer class="quote-by">On a delivered dashboard</footer>
         </blockquote>
